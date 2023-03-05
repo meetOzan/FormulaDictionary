@@ -19,5 +19,4 @@ class ViewPagerAdapter(fragmentManager : FragmentManager,lifecycle: Lifecycle)
         else->DriversFragment()
 
     }
-
 }
