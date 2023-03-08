@@ -7,20 +7,20 @@ data class Drivers(@SerializedName("smallUrl")
                    @SerializedName("number")
                    val number: String = "",
                    @SerializedName("winNum")
-                   val winNum: String = "",
+                   val winNum: Int = 0,
                    @SerializedName("nation")
                    val nation: String = "",
                    @SerializedName("championNum")
-                   val championNum: String = "",
+                   val championNum: Int = 0,
                    @SerializedName("name")
                    val name: String = "",
                    @SerializedName("poleNum")
-                   val poleNum: String = "",
+                   val poleNum: Int = 0,
                    @SerializedName("team")
                    val team: String = "",
                    @SerializedName("bigUrl")
                    val bigUrl: String = "",
                    @SerializedName("age")
-                   val age: String = "",
+                   val age: Int = 0,
                    @SerializedName("seasonNum")
-                   val seasonNum: String = "")
+                   val seasonNum: Int = 0)

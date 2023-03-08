@@ -73,4 +73,7 @@ dependencies {
 
     // Lottie
     implementation 'com.airbnb.android:lottie:5.2.0'
+
+    //ImageSlider
+    implementation 'com.github.denzcoskun:ImageSlideshow:0.1.0'
 }

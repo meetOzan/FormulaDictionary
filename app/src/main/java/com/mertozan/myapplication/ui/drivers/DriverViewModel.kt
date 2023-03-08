@@ -17,6 +17,10 @@ class DriverViewModel : ViewModel() {
     val driverList: MutableLiveData<List<Drivers>>
         get() = _driverList
 
+    private val _searchedDrivers = MutableLiveData<List<Drivers>>()
+    val searchedDrivers : MutableLiveData<List<Drivers>>
+        get() = _searchedDrivers
+
     private val driverService: FormulaService = ApiUtils.getFormulaDaoInterface()
 
     init {
@@ -37,6 +41,23 @@ class DriverViewModel : ViewModel() {
 
             override fun onFailure(call: Call<DriverResponse>, t: Throwable) {
                 Log.e("Driver", t.message.orEmpty())
+            }
+        })
+    }
+
+    fun searchDriver(name: String,list: MutableLiveData<List<Drivers>>){
+        driverService.searchDriver(name).enqueue(object : Callback<DriverResponse>{
+            override fun onResponse(
+                call: Call<DriverResponse>,
+                response: Response<DriverResponse>
+            ) {
+                response.body()?.formulaDrivers.let {
+                    list.value = it
+                }
+            }
+
+            override fun onFailure(call: Call<DriverResponse>, t: Throwable) {
+                Log.e("Search",t.message.orEmpty())
             }
         })
     }
