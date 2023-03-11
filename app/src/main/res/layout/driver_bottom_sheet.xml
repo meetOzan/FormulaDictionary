@@ -27,7 +27,7 @@
             app:layout_constraintTop_toBottomOf="@id/imageTop" />
 
         <TextView
-            android:id="@+id/tvDriverTeam"
+            android:id="@+id/tvTeamName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -50,7 +50,7 @@
             android:text=""
             android:textColor="@color/secondaryColor"
             android:textSize="22sp"
-            app:layout_constraintStart_toEndOf="@id/tvDriverTeam"
+            app:layout_constraintStart_toEndOf="@id/tvTeamName"
             app:layout_constraintTop_toBottomOf="@id/imageSliderDriver" />
 
         <TextView
@@ -65,7 +65,7 @@
             android:textStyle="bold"
             android:textSize="22sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvDriverTeam" />
+            app:layout_constraintTop_toBottomOf="@id/tvTeamName" />
 
         <TextView
             android:id="@+id/driverDetailNation"

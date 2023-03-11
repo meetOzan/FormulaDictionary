@@ -12,4 +12,7 @@
     <string name="season">Season:</string>
     <string name="win_number">Win Number</string>
     <string name="bottomsheetstick">bottomSheetStick</string>
+    <string name="team_name">Team Name:</string>
+    <string name="homeland">Homeland:</string>
+    <string name="teamimage">teamImage</string>
 </resources>

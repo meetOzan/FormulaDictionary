@@ -45,14 +45,14 @@ class DriverViewModel : ViewModel() {
         })
     }
 
-    fun searchDriver(name: String,list: MutableLiveData<List<Drivers>>){
+    fun searchDriver(name: String,list: ArrayList<Drivers>){
         driverService.searchDriver(name).enqueue(object : Callback<DriverResponse>{
             override fun onResponse(
                 call: Call<DriverResponse>,
                 response: Response<DriverResponse>
             ) {
                 response.body()?.formulaDrivers.let {
-                    list.value = it
+                    list.addAll(it!!)
                 }
             }
 

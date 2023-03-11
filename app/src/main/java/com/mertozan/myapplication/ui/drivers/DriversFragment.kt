@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.mertozan.myapplication.data.model.Drivers
@@ -18,8 +17,7 @@ class DriversFragment : Fragment() {
     private lateinit var rv: RecyclerView
     private lateinit var adapter: DriverAdapter
     private val viewModel by lazy { DriverViewModel() }
-
-    private var searchList = MutableLiveData<List<Drivers>>()
+    private lateinit var list: List<Drivers>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,26 +38,25 @@ class DriversFragment : Fragment() {
     }
 
 
-
     private fun observer() {
         viewModel.driverList.observe(viewLifecycleOwner) { driverList ->
-            adapter = DriverAdapter(driverList,requireContext(),layoutInflater)
+            adapter = DriverAdapter(driverList, requireContext(), layoutInflater)
             rv.adapter = adapter
         }
     }
 
-    private fun search(){
-        binding.driverSearchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+    private fun search() {
+        binding.driverSearchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                viewModel.searchDriver(query.toString(),searchList)
-                adapter = DriverAdapter(searchList as List<Drivers>,requireContext(),layoutInflater)
+                viewModel.searchDriver(query.toString(), list as ArrayList<Drivers>)
+                adapter = DriverAdapter(list, requireContext(), layoutInflater)
                 rv.adapter = adapter
                 return true
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                viewModel.searchDriver(newText.toString(),searchList)
-                adapter = DriverAdapter(searchList as List<Drivers>,requireContext(),layoutInflater)
+                viewModel.searchDriver(newText.toString(), list as ArrayList<Drivers>)
+                adapter = DriverAdapter(list, requireContext(), layoutInflater)
                 rv.adapter = adapter
                 return true
             }

@@ -1,6 +1,8 @@
 package com.mertozan.myapplication.ui.drivers
 
 import android.content.Context
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
@@ -45,6 +47,7 @@ class DriverAdapter(
 
             val dialog = BottomSheetDialog(context)
             val view = layoutInflater.inflate(R.layout.driver_bottom_sheet, null)
+            dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
             dialog.setContentView(view)
 
