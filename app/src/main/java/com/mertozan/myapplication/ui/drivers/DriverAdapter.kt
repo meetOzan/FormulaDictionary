@@ -39,7 +39,7 @@ class DriverAdapter(
         holder.driverBinding.driverCard = driver
 
         Picasso.get().load(driver.smallUrl)
-            .resize(160, 160)
+            .resize(500, 500)
             .centerCrop()
             .into(holder.driverBinding.imageDriver)
 
