@@ -13,13 +13,9 @@ import retrofit2.Response
 
 class DriverViewModel : ViewModel() {
 
-    private var _driverList = MutableLiveData<List<Drivers>>()
-    val driverList: MutableLiveData<List<Drivers>>
+    private var _driverList = MutableLiveData<ArrayList<Drivers>>()
+    val driverList: MutableLiveData<ArrayList<Drivers>>
         get() = _driverList
-
-    private val _searchedDrivers = MutableLiveData<List<Drivers>>()
-    val searchedDrivers : MutableLiveData<List<Drivers>>
-        get() = _searchedDrivers
 
     private val driverService: FormulaService = ApiUtils.getFormulaDaoInterface()
 
@@ -35,29 +31,12 @@ class DriverViewModel : ViewModel() {
                 response: Response<DriverResponse>
             ) {
                 response.body()?.formulaDrivers?.let {
-                    _driverList.value = it
+                    _driverList.value = it as ArrayList
                 }
             }
 
             override fun onFailure(call: Call<DriverResponse>, t: Throwable) {
                 Log.e("Driver", t.message.orEmpty())
-            }
-        })
-    }
-
-    fun searchDriver(name: String,list: ArrayList<Drivers>){
-        driverService.searchDriver(name).enqueue(object : Callback<DriverResponse>{
-            override fun onResponse(
-                call: Call<DriverResponse>,
-                response: Response<DriverResponse>
-            ) {
-                response.body()?.formulaDrivers.let {
-                    list.addAll(it!!)
-                }
-            }
-
-            override fun onFailure(call: Call<DriverResponse>, t: Throwable) {
-                Log.e("Search",t.message.orEmpty())
             }
         })
     }
